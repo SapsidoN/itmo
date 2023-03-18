@@ -11,9 +11,9 @@ public class Project3 {
         System.out.println(more);
         //3
         int month = 0;
-        for (int i = 0; i < 12; i++) {
+        for (int i = -2; i < 13; i++) {
             month = i;
-            if (month == 12 || month <= 2) {
+            if (month == 12 || month>=1 && month <= 2) {
                 System.out.println("зима");
             } else if (month >= 3 && month <= 5) {
                 System.out.println("весна");
