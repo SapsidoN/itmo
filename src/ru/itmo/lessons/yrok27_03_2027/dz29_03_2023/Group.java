@@ -9,7 +9,7 @@ public class Group {
         if (arr != null && gora != null) {
             this.set = set;
             this.gora = gora;
-            this.arr=arr;
+            this.arr = arr;
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
 
@@ -25,20 +25,20 @@ public class Group {
                     arr2[i] = arr[i];
                 }
                 arr2[arr.length] = hel;
-                arr=arr2;
+                arr = arr2;
             }
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
 
-    public void print(){
+    public void print() {
         System.out.println("В группу входит: ");
-        if(arr!=null || arr.length!=0)
-        for (var a:arr){
-           a.print();
-        }
+        if (arr != null || arr.length != 0)
+            for (var a : arr) {
+                a.print();
+            }
         else System.out.println("В группе нет человек");
         System.out.println("Гора: ");
         gora.print();
-        System.out.println("набор :" + (set==true?"открыт": "закрыт"));
+        System.out.println("набор :" + (set == true ? "открыт" : "закрыт"));
     }
 }

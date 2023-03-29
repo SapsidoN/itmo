@@ -29,7 +29,7 @@ public class Mountain {
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
 
-    public  void print(){
-        System.out.println(Name + " " + Country + " " + Height );
+    public void print() {
+        System.out.println(Name + " " + Country + " " + Height);
     }
 }

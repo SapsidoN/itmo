@@ -21,7 +21,7 @@ public class Climber {
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
 
-    public void print(){
-        System.out.println(name+ " " + ResidentialAddress );
+    public void print() {
+        System.out.println(name + " " + ResidentialAddress);
     }
 }

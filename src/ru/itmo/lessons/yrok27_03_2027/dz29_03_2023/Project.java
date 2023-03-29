@@ -37,13 +37,13 @@ public class Project {
         //2
 
 
-        Product p1=new Product("мясо",5,5,5,5);
-        Product p2=new Product("молоко",5,5);
-        Product p3=new Product("яйцо",5,5,5);
-        Product p4=new Product("хлеб",5);
-        Product p5=new Product("вода",5,5,5,0);
+        Product p1 = new Product("мясо", 5, 5, 5, 5);
+        Product p2 = new Product("молоко", 5, 5);
+        Product p3 = new Product("яйцо", 5, 5, 5);
+        Product p4 = new Product("хлеб", 5);
+        Product p5 = new Product("вода", 5, 5, 5, 0);
 
-        MyAllowedProducts my = new MyAllowedProducts(5,5,5,0);
+        MyAllowedProducts my = new MyAllowedProducts(5, 5, 5, 0);
 
 
         my.AddProduct(p1);
@@ -55,10 +55,6 @@ public class Project {
         my.PrintProduct();
 
     }
-
-
-
-
 
 
 }
