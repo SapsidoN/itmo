@@ -23,7 +23,6 @@ public class MyAllowedProducts {
             if (arr.length == 0) {
                 arr = new Product[1];
                 arr[0] = ar;
-                return;
             } else {
                 Product[] arr2 = new Product[arr.length + 1];
                 for (int i = 0; i < arr.length; i++) {
@@ -31,11 +30,9 @@ public class MyAllowedProducts {
                 }
                 arr2[arr.length] = ar;
                 arr = arr2;
-                return;
             }
         } else {
             System.out.println("ошибка");
-            return;
         }
     }
 
@@ -62,7 +59,6 @@ public class MyAllowedProducts {
     public void PrintProduct() {
         if (arr.length == 0) {
             System.out.println("продуктов нет");
-            return;
         }
         else
             for (var a : arr) {

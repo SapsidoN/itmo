@@ -59,7 +59,6 @@ public class Product {
 
     public void print() {
         System.out.println(name + " " + Squirrels + " " + Fats + " " + Carbohydrates + " " + Calories);
-        return;
     }
 
 }

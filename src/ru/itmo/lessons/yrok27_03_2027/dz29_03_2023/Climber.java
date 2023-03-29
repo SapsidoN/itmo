@@ -12,19 +12,16 @@ public class Climber {
     public void SetName(String name) {
         if (name != null && name.length() > 3) {
             this.name = name;
-            return;
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
 
     public void SetAddress(String adres) {
         if (adres != null && adres.length() > 5) {
             ResidentialAddress = adres;
-            return;
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
 
     public void print() {
         System.out.println(name + " " + ResidentialAddress);
-        return;
     }
 }

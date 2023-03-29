@@ -26,7 +26,6 @@ public class Group {
                 }
                 arr2[arr.length] = hel;
                 arr = arr2;
-                return;
             }
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
@@ -43,6 +42,5 @@ public class Group {
         System.out.println("Гора: ");
         gora.print();
         System.out.println("набор :" + (set == true ? "открыт" : "закрыт"));
-        return;
     }
 }
