@@ -26,19 +26,23 @@ public class Group {
                 }
                 arr2[arr.length] = hel;
                 arr = arr2;
+                return;
             }
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
 
     public void print() {
         System.out.println("В группу входит: ");
-        if (arr != null || arr.length != 0)
+        if (arr != null || arr.length != 0) {
             for (var a : arr) {
                 a.print();
             }
+            return;
+        }
         else System.out.println("В группе нет человек");
         System.out.println("Гора: ");
         gora.print();
         System.out.println("набор :" + (set == true ? "открыт" : "закрыт"));
+        return;
     }
 }

@@ -14,22 +14,26 @@ public class Mountain {
     public void SetName(String name) {
         if (name != null && name.length() > 4) {
             this.Name = name;
+            return;
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
 
     public void SetCountry(String count) {
         if (count != null && count.length() > 4) {
             Country = count;
+            return;
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
 
     public void SetHeight(double he) {
         if (he > 100) {
             Height = he;
+            return;
         } else throw new IllegalArgumentException("ошибка введеных данных");
     }
 
     public void print() {
         System.out.println(Name + " " + Country + " " + Height);
+        return;
     }
 }
