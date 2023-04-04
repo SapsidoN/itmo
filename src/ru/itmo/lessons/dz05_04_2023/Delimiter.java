@@ -1,5 +1,5 @@
 package ru.itmo.lessons.dz05_04_2023;
-
+//
 public class Delimiter extends AppLogger implements Innnn {
 
     private Innnn up;

@@ -1,5 +1,5 @@
 package ru.itmo.lessons.dz05_04_2023;
-
+//
 public abstract class AppLogger {
 
     protected String str;
