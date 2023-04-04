@@ -4,6 +4,6 @@ public abstract class AppLogger {
 
     protected String str;
 
-
+//
     public abstract void log(String str);
 }
