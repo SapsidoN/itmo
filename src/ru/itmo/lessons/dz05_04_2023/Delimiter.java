@@ -18,6 +18,7 @@ public class Delimiter extends AppLogger {
         } else throw new IllegalArgumentException("НУЛЛ");
     }
 
+    @Override
     public void log(String str) {
         if (str != null) {
             str = new String("===" + str + "===");
