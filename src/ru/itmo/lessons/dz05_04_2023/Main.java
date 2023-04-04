@@ -16,6 +16,8 @@ public class Main {
         AppFileWriter file = new AppFileWriter();
         file.log("данные"); // данные будут записаны в файл
 
+        AppLogger logger03 = new Upper(new Delimiter(new ConsoleWriter()));
+
     }
 }
 

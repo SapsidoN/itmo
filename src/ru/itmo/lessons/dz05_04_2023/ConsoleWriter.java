@@ -1,6 +1,6 @@
 package ru.itmo.lessons.dz05_04_2023;
 
-public class ConsoleWriter extends AppLogger {
+public class ConsoleWriter extends AppLogger implements Innnn {
 
 
     @Override

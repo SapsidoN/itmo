@@ -13,8 +13,7 @@ public class AppFileWriter extends AppLogger {
     public void log(String str) {
         try {
             Files.write(Paths.get("file-name.txt"), str.getBytes(), StandardOpenOption.APPEND);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e);
         }
 
