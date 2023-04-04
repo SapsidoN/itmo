@@ -1,18 +1,10 @@
 package ru.itmo.lessons.dz05_04_2023;
 
-public class Upper extends AppLogger {
+public class Upper extends AppLogger implements Innnn {
 
-    private ConsoleWriter C;
-    private Delimiter D;
+    private Innnn D;
 
-    public Upper(ConsoleWriter c) {
-        if (c != null) {
-            this.C = c;
-        } else throw new IllegalArgumentException("нулл");
-
-    }
-
-    public Upper(Delimiter d) {
+    public Upper(Innnn d) {
         if (d != null) {
             this.D = d;
         } else throw new IllegalArgumentException("нулл");
@@ -27,7 +19,6 @@ public class Upper extends AppLogger {
             this.str = str;
 
         } else throw new IllegalArgumentException("null");
-        if (C == null) D.log(this.str);
-        else C.log(this.str);
+        D.log(this.str);
     }
 }
