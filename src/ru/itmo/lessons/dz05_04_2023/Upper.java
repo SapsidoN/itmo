@@ -1,6 +1,6 @@
 package ru.itmo.lessons.dz05_04_2023;
 
-public class Upper extends AppLogger implements Innnn {
+public class Upper extends AppLogger {
 
     private Innnn D;
 
