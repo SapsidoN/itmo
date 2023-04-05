@@ -3,10 +3,10 @@ package ru.itmo.lessons.dz05_04_2023;
 //
 public class Delimiter extends AppLogger {
 
-    private Innnn up;
+    private Inter up;
 
 
-    public Delimiter(Innnn up) {
+    public Delimiter(Inter up) {
         if (up != null) {
             this.up = up;
         } else throw new IllegalArgumentException("НУЛЛ");

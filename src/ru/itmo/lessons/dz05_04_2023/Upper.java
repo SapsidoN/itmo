@@ -2,9 +2,9 @@ package ru.itmo.lessons.dz05_04_2023;
 
 public class Upper extends AppLogger {
 
-    private Innnn D;
+    private Inter D;
 
-    public Upper(Innnn d) {
+    public Upper(Inter d) {
         if (d != null) {
             this.D = d;
         } else throw new IllegalArgumentException("нулл");
