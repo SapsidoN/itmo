@@ -1,5 +1,5 @@
 package ru.itmo.lessons.dz05_04_2023;
-
+//
 public class Main {
     public static void main(String[] args) {
 
@@ -15,6 +15,8 @@ public class Main {
 
         AppFileWriter file = new AppFileWriter();
         file.log("данные"); // данные будут записаны в файл
+
+        AppLogger logger03 = new Upper(new Delimiter(new ConsoleWriter()));
 
     }
 }
