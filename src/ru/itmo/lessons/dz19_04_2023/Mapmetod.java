@@ -74,7 +74,7 @@ public interface Mapmetod extends Comparator<Task02> {
                     }
 
                 }
-                arrMap.put(i+1, max);
+                arrMap.put(i + 1, max);
 
             }
             return arrMap;
