@@ -61,25 +61,21 @@ public interface Mapmetod extends Comparator<Task02> {
         return null;
     }
 
-    public static Map<Integer, String> topWord(String text) {
-        if (text != null) {
+    public static void topWord(String text) {
+       Map<String,Integer> map =coutnWord(Arrays.asList(text.split(" ")));
+       List<Map.Entry<String,Integer>> list= new ArrayList<>(map.entrySet());
 
-            HashMap<Integer, String> arrMap = new HashMap<>();
-            String[] arrText = text.split(" ");
-            for (int i = 0; i < 10; i++) {
-                String max = arrText[0];
-                for (var word : arrText) {
-                    if (max.length() < word.length() && !arrMap.values().contains(word)) {
-                        max = word;
-                    }
+       class ValueComparator implements  Comparator<Map.Entry<String,Integer>> {
+           @Override
+           public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
 
-                }
-                arrMap.put(i + 1, max);
-
-            }
-            return arrMap;
+               return o2.getValue()- o1.getValue();
+           }
+       }
+       list.sort((new ValueComparator()));
+        for(int i=0;i<10;i++){
+            System.out.println(list.get(i).getKey());
         }
-        return null;
     }
 
 }

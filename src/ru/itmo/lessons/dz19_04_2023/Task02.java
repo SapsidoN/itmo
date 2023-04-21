@@ -55,7 +55,7 @@ public class Task02 {
 
         System.out.println(Mapmetod.countTextWord(text,"like").toString());
         System.out.println(Mapmetod.coutWordText(text));
-        System.out.println(Mapmetod.topWord(text).toString());
+        Mapmetod.topWord(text);
     }
 
 
