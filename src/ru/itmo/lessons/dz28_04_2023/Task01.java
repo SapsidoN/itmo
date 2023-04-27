@@ -82,7 +82,7 @@ public class Task01 {
 
         System.out.println(genderIntegerMap.toString());
 
-        //     см. метод Collectors.summingInt
+        //     см. метод Collectors.summingIn
 
     }
 }
