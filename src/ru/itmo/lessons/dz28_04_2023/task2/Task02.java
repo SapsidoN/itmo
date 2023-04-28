@@ -37,7 +37,8 @@ public class Task02 {
         System.out.println(sumakk.toString());
         //  2. найти сумму транзакций по всем аккаунтам (возможные решения попробуйте найти самостоятельно)
 
-         // long sum=transactionStream.collect(Collectors.summingLong(s->s.getSum()));
+         /* long sum=transactionStream.collect(Collectors.summingLong(s->s.getSum()));
+            long sum=transactionStream.mapToLong(tr -> tr.getSum()).sum();*/
      //  System.out.println(sum);
 
     }
