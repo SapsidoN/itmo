@@ -1,5 +1,5 @@
 package ru.itmo.lessons.dz28_04_2023.task2;
-
+//
 public class Transaction {
     private String uuid;
     private long sum;

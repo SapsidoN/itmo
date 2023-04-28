@@ -1,5 +1,5 @@
 package ru.itmo.lessons.dz28_04_2023.task2;
-
+//
 public class Account {
     private String number;
     private long balance;
