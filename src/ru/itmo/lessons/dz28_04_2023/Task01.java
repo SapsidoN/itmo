@@ -5,7 +5,7 @@ import java.time.Period;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
+//принимаемый аргумет берется из контекста
 public class Task01 {
     public static void main(String[] args) {
         List<Student> students = new ArrayList<>(Arrays.asList(
@@ -25,8 +25,9 @@ public class Task01 {
 
         // TODO: Используя методы Stream API:
         //  1. Разделить учеников на две группы: мальчиков и девочек. Результат: Map<Student.Gender, ArrayList<Student>>
-        Map<Student.Gender, List<Student>> map = students.stream().collect(Collectors.groupingBy(
-                student -> student.getGender()
+        Map<Student.Gender, ArrayList<Student>> map = students.stream().collect(Collectors.groupingBy(
+                student -> student.getGender(),
+                Collectors.toCollection(ArrayList::new)
 
 
         ));
@@ -37,7 +38,7 @@ public class Task01 {
 
         //  3. Найти самого младшего ученика
         Student student = students.stream()
-                .max(Comparator.comparing(Student::getBirth))
+                .min((s1,s2)-> s2.getBirth().compareTo(s1.getBirth()))
                 .get();
 
         System.out.println(student.toString());
@@ -51,11 +52,11 @@ public class Task01 {
         System.out.println(mapStud.toString());
 
         //  6. Отсортировать по полу, потом по дате рождения, потом по имени (в обратном порядке), собрать в список (ArrayList)
-        List<Student> arrayList = students.stream()
+        ArrayList<Student> arrayList = students.stream()
                 .sorted(Comparator.comparing(Student::getGender))
                 .sorted(Comparator.comparing(Student::getBirth))
                 .sorted(Comparator.comparing(Student::getName).reversed())
-                .toList();
+                .collect(Collectors.toCollection(ArrayList::new));
         System.out.println(arrayList.toString());
 
         //  7. Вывести в консоль всех учеников в возрасте от N до M лет
