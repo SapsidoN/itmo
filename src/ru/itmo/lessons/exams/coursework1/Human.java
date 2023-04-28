@@ -3,7 +3,6 @@ package ru.itmo.lessons.exams.coursework1;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Formatter;
 import java.util.Locale;
 
 public class Human {
@@ -21,15 +20,13 @@ public class Human {
     private void setName(String name) {
         if (name != null) {
             this.name = name;
-        }
-        else throw new IllegalArgumentException("нулл имя");
+        } else throw new IllegalArgumentException("нулл имя");
     }
 
     private void setSurname(String surname) {
         if (surname != null) {
             this.surname = surname;
-        }
-         else throw new IllegalArgumentException("нулл имя");
+        } else throw new IllegalArgumentException("нулл имя");
     }
 
     private void setDate(String date) throws ParseException {
@@ -37,8 +34,7 @@ public class Human {
             Locale rus = new Locale("ru", "RU");
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", rus);
             birthday = formatter.parse(date);
-        }
-         else  throw new IllegalArgumentException("нулл имя");
+        } else throw new IllegalArgumentException("нулл имя");
     }
 
     @Override

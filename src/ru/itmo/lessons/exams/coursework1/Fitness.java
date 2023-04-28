@@ -1,11 +1,11 @@
 package ru.itmo.lessons.exams.coursework1;
 
-import java.time.*;
+
 import java.util.*;
 
 public class Fitness {
 
-    private Calendar dateTime = Calendar.getInstance();
+    private Calendar dateTime = new GregorianCalendar(2023, Calendar.APRIL, 29, 9, 2);
     private ArrayList<Subscription> arrGym;
 
     private ArrayList<Subscription> arrBasin;
@@ -19,6 +19,17 @@ public class Fitness {
         gym,
         basin,
         group;
+
+        public boolean proverkaZone(Subscription subscription) {
+            if (this != null) {
+                if (subscription.getSubscriptionType() == Subscription.SubscriptionType.One_time) {
+                    return this == Zone.group ? false : true;
+                } else if (subscription.getSubscriptionType() == Subscription.SubscriptionType.Day) {
+                    return this == Zone.basin ? false : true;
+                } else return true;
+            }
+            throw new IllegalArgumentException("зана нулл");
+        }
     }
 
     public Fitness() {
@@ -52,35 +63,49 @@ public class Fitness {
     }
 
     public void registrZone(Subscription sub, Zone zone) {
-        if (zone != null) {
+        if (zone.proverkaZone(sub)) {
             if (proverka(sub)) {
                 switch (zone) {
                     case gym:
-                        if (arrGym.size() != 20) {
+                        if (arrGym.size() <= 20) {
                             arrGym.add(sub);
                             break;
                         }
+                        throw new IllegalArgumentException("мест нет");
                     case basin:
-                        if (arrBasin.size() != 20) {
+                        if (arrBasin.size() <= 20) {
                             arrBasin.add(sub);
                             break;
                         }
+                        throw new IllegalArgumentException("мест нет");
                     case group:
-                        if (arrGroop.size() != 20) {
+                        if (arrGroop.size() <= 20) {
                             arrGroop.add(sub);
                             break;
                         }
-
-                    default:
                         throw new IllegalArgumentException("мест нет");
 
                 }
+                System.out.println("В зону " + zone.toString() + " зарегистрировался " + sub.getHuman());
             }
         }
+        System.out.println(sub.getHuman().toString() + " запрещен доступ к " + zone.toString());
 
     }
-    public  Calendar getCalendar(){
-        return dateTime;
+
+    public void printInfo() {
+        System.out.println("Посетители тенажерного зала:");
+        for (var print : arrGym) {
+            System.out.println(print.getHuman().toString());
+        }
+        System.out.println("Посетители бассейна:");
+        for (var print : arrGym) {
+            System.out.println(print.getHuman().toString());
+        }
+        System.out.println("Посетители групповых занятий:");
+        for (var print : arrGym) {
+            System.out.println(print.getHuman().toString());
+        }
     }
 
 }
