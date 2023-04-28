@@ -37,7 +37,7 @@ public class Fitness {
     }
 
 
-    private boolean Proverka(Subscription subscription) {
+    private boolean proverka(Subscription subscription) {
         if (subscription != null) {
             if (subscription.getEndDate().before(dateTime)) throw new IllegalArgumentException("просрочен абонемент");
             if (subscription.getSubscriptionType() == Subscription.SubscriptionType.Day) {
@@ -53,7 +53,7 @@ public class Fitness {
 
     public void registrZone(Subscription sub, Zone zone) {
         if (zone != null) {
-            if (Proverka(sub)) {
+            if (proverka(sub)) {
                 switch (zone) {
                     case gym:
                         if (arrGym.size() != 20) {
