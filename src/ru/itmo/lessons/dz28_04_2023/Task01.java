@@ -48,7 +48,7 @@ public class Task01 {
                 .get();
         System.out.println(student2.toString());
         //  5. Собрать учеников в группы по году рождения
-        Map<LocalDate, List<Student>> mapStud = students.stream().collect(Collectors.groupingBy(student1 -> student1.getBirth()));
+        Map<Integer, List<Student>> mapStud = students.stream().collect(Collectors.groupingBy(student1 -> student1.getBirth().getYear()));
         System.out.println(mapStud.toString());
 
         //  6. Отсортировать по полу, потом по дате рождения, потом по имени (в обратном порядке), собрать в список (ArrayList)
