@@ -108,4 +108,12 @@ public class Fitness {
         }
     }
 
+    public void  endFintess(){
+        if(dateTime.get(Calendar.HOUR_OF_DAY) >=22 && dateTime.get(Calendar.HOUR_OF_DAY) <8){
+            arrGym.clear();
+            arrGroop.clear();
+            arrBasin.clear();
+        }
+    }
+
 }
