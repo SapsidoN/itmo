@@ -54,12 +54,14 @@ public class Users implements Serializable {
     }
 
     public User enterUsers() {
+        Scanner scanner;
+        String name;
+        User user;
         if (arrayList.size() == 0) {
-            String name;
             System.out.println("Пользователей нет,Введите имя для создания");
-            Scanner scanner = new Scanner(System.in);
+            scanner = new Scanner(System.in);
             name = scanner.nextLine();
-            User user = new User(name);
+            user = new User(name);
             creatUsers(user);
             return user;
         }
@@ -67,9 +69,17 @@ public class Users implements Serializable {
         for (int i = 0; i < arrayList.size(); i++) {
             System.out.println(i + 1 + " " + arrayList.get(i).getName());
         }
-        System.out.println("Выберите пользователя(цифра)");
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("Выберите пользователя(цифра)"+"\n для создания пользователя введите 0");
+        scanner = new Scanner(System.in);
         int a = scanner.nextInt();
+        if(a==0){
+            scanner = new Scanner(System.in);
+            System.out.println("Введите имя пользователя");
+            name = scanner.nextLine();
+            user = new User(name);
+            creatUsers(user);
+            return user;
+        }
         return arrayList.get(a - 1);
     }
 
