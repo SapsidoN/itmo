@@ -1,11 +1,10 @@
 package ru.itmo.lessons.exams.coursework2;
 
-import java.io.IOException;
+
 import java.util.Scanner;
 
 public class StartGame {
-    public static void main(String[] args) throws IOException {
-
+    public static void starTextQ() {
         User user = null;
         boolean flag = false;
         TextQuest textQuest = new TextQuest();
@@ -27,7 +26,6 @@ public class StartGame {
                     }
                     new Start().on(user);
                     flag = true;
-                    textQuest.logigGame(user.getSaveText(), user);
                     break;
                 case "2":
                     if (flag == true) {
@@ -44,6 +42,6 @@ public class StartGame {
             }
         }
 
-
     }
 }
+

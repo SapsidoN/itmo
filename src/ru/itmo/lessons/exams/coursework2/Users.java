@@ -48,7 +48,7 @@ public class Users implements Serializable {
 
         } catch (IOException | ClassNotFoundException FI) {
             System.out.println("Что то с  файлом или нет типа класса");
-            FI.printStackTrace();
+            /////
         }
         return null;
     }

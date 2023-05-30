@@ -1,6 +1,7 @@
 package ru.itmo.lessons.exams.coursework2;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,21 +10,28 @@ import java.util.Scanner;
 public class TextQuest {
     private List<String> strings;
 
-
-    public TextQuest() throws IOException {
+    public TextQuest() {
         strings = new ArrayList<>();
         setStrings();
     }
 
 
-    private void setStrings() throws IOException {
-        File file = new File("file.txt");
-        file.createNewFile();
-        String text = "";
-        Scanner scanner = new Scanner(file);
-        scanner.useDelimiter("//");
-        while (scanner.hasNextLine()) {
-            strings.add(scanner.next());
+    private void setStrings() {
+        try {
+            File file = new File("file.txt");
+            file.createNewFile();
+            String text = "";
+            Scanner scanner = new Scanner(file);
+            scanner.useDelimiter("//");
+            while (scanner.hasNextLine()) {
+                strings.add(scanner.next());
+            }
+
+        } catch (FileNotFoundException i) {
+            System.out.println("Ошибка чтения файла");
+            throw new RuntimeException();
+        } catch (IOException i) {
+            System.out.println("ошибка в создании файла");
         }
 
     }

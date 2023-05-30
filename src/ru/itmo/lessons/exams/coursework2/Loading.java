@@ -10,12 +10,18 @@ public class Loading implements Command {
         System.out.println("Меню загрузки");
         try {
             File fileReader = new File("SaveS.txt");
+        //    Files.createFile(fileReader.toPath());
             ArrayList<String> text = new ArrayList<>();
             Scanner scanner = new Scanner(fileReader);
             scanner.useDelimiter("//");
             while (scanner.hasNext()) {
                 text.add(scanner.next());
             }
+            if(text.size()==0) {
+                System.out.println("Сохранения не найдены(((");
+                return;
+            }
+
             for (int i = 0; i < text.size(); i++) {
                 System.out.println(i + 1 + " " + text.get(i));
             }
