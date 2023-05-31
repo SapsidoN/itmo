@@ -28,14 +28,10 @@ public class ServerWithThreads {
                     connections.add(connection);
                     System.out.println("Клиент добавлен в коллекцию");
                     ThreadForConnection thread = new ThreadForConnection(connection, connections);
-                    thread.setDaemon(false);
                     thread.start();
-                    thread.join();
                 } catch (IOException e) {
                     System.out.println("Не удалось установить соединение с клиентом");
                     if (socket != null) socket.close();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
                 }
             }
 
@@ -45,7 +41,7 @@ public class ServerWithThreads {
     }
 
     public static void main(String[] args) {
-        ServerWithThreads serverWithThreads = new ServerWithThreads(2231);
+        ServerWithThreads serverWithThreads = new ServerWithThreads(2226);
         serverWithThreads.startServer();
     }
 }

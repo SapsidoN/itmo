@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class Clientt {
     public InetSocketAddress remote;
 
-    private ReadWrite readWrite;
+
 
     public Clientt(InetSocketAddress remote) {
         this.remote = remote;
@@ -23,40 +23,22 @@ public class Clientt {
 
 
     public void startClient() {
-        String text;
-
-            try {
-                Socket socket = new Socket(remote.getHostString(), remote.getPort());
-                readWrite = new ReadWrite(socket);
-                while (true) {
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.println("Введите сообщение для отправки, /exit для выхода ");
-                    text = scanner.nextLine();
-
-                    if (text.equals("/exit")) {
-                        socket.close();
-                        break;
-                    }
-                    ClientGoMessage clientGoMessage = new ClientGoMessage(text, readWrite);
+                try {
+                    Socket socket = new Socket(remote.getHostString(), remote.getPort());
+                    ReadWrite readWrite = new ReadWrite(socket);
+                    ClientGoMessage clientGoMessage = new ClientGoMessage(readWrite);
                     clientGoMessage.start();
-
                     ClientRead clientRead = new ClientRead(readWrite);
                     clientRead.start();
-                    clientRead.join();
+                } catch (IOException e) {
+                    System.out.println("не удалось подлючится к серверу ;(((((");
+
                 }
-
-            } catch (IOException e) {
-                System.out.println("не удалось подлючится к серверу ;(((((");
-
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-
 
     }
 
     public static void main(String[] args) {
-        InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 2231);
+        InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 2226);
         Clientt clientt = new Clientt(inetSocketAddress);
         clientt.startClient();
     }

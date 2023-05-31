@@ -15,11 +15,14 @@ public class ClientRead  extends  Thread{
 
     @Override
     public  void run(){
-        try {
-            Message message = readWrite.readMessage();
-            System.out.println(message.getText());
-        } catch (IOException e) {
-            System.out.println("Соеденение сервером потеряно");
+        while (true) {
+            try {
+                Message message = readWrite.readMessage();
+                System.out.println("Сообщение от сервера " + message.getText());
+            } catch (IOException e) {
+                System.out.println("Соеденение сервером потеряно");
+                break;
+            }
         }
     }
 }
