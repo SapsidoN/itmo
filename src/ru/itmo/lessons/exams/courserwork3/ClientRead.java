@@ -1,7 +1,4 @@
-package ru.itmo.lessons.dz_24_05_2023;
-
-import ru.itmo.lessons.yrok17_05_2023.Message;
-import ru.itmo.lessons.yrok17_05_2023.ReadWrite;
+package ru.itmo.lessons.exams.courserwork3;
 
 import java.io.IOException;
 

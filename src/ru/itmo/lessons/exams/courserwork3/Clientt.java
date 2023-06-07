@@ -1,16 +1,8 @@
-package ru.itmo.lessons.dz_24_05_2023;
+package ru.itmo.lessons.exams.courserwork3;
 
-import ru.itmo.lessons.exams.coursework2.Start;
-import ru.itmo.lessons.yrok17_05_2023.ReadWrite;
-
-import java.awt.*;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.util.Scanner;
 
 public class Clientt {
     public InetSocketAddress remote;
