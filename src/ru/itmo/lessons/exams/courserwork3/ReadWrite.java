@@ -23,16 +23,19 @@ public class ReadWrite implements AutoCloseable{
         this.socket = socket;
     }
 
-    public void writeFile(File file) throws IOException{
-    byte[] bytes = new byte[1024];
-    fis = new FileInputStream(file);
-    bis = new BufferedInputStream(fis);
-    bis.read(bytes,0,bytes.length);
-    os = socket.getOutputStream();
-    System.out.println("Sending " + file.getName() + "(" + bytes.length + " bytes)");
-    os.write(bytes,0,bytes.length);
-    os.flush();
-    System.out.println("Done");
+    public void writeFile(FileTxt fileTxt) throws IOException{
+      output.writeObject(fileTxt);
+      output.flush();
+
+    }
+
+    public FileTxt readFiletxt() throws IOException {
+        try {
+            return  (FileTxt) input.readObject();
+        }catch (ClassNotFoundException c){
+            System.out.println("класс не найден");
+        }
+        return null;
     }
 
     public void readFile() throws IOException {

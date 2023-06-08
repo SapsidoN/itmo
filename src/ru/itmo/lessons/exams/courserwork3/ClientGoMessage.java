@@ -24,9 +24,12 @@ public class ClientGoMessage extends Thread {
                 readWrite.close();
                 break;
             }
+            FileTxt fileTxt = new FileTxt();
+            fileTxt.addFile("C:\\h.txt","хуйня");
             Message message = new Message(text);
             try {
                 readWrite.writeMessage(message);
+                readWrite.writeFile(fileTxt);
             } catch (IOException e) {
                 System.out.println("Соеденение с сервером потеряно");
                 try (FileWriter writer = new FileWriter("message.txt", true)) {
