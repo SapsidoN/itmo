@@ -60,9 +60,9 @@ public class FileTxt implements Serializable {
             System.out.println(commentFile);
             fileWriter = new FileWriter(file.getName());
             fileWriter.write(commentFile);
-          //  for (int i = 0; i < text.size(); i++) {
-            //    fileWriter.write(text.get(i));
-            //}
+            for (String s : text) {
+                fileWriter.write(s);
+            }
         }catch (IOException i){
             i.printStackTrace();
         }finally {

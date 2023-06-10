@@ -1,7 +1,9 @@
 package ru.itmo.lessons.exams.courserwork3;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class ClientGoMessage extends Thread {
@@ -16,6 +18,7 @@ public class ClientGoMessage extends Thread {
     @Override
     public void run() {
         Scanner scanner = new Scanner(System.in);
+        Path path = Path.of("C:\\h.txt");
         String text;
         while (true) {
             System.out.println("Введите сообщение для отправки, /exit для выхода ");
@@ -28,6 +31,7 @@ public class ClientGoMessage extends Thread {
             fileTxt.addFile("C:\\h.txt","хуйня");
             Message message = new Message(text);
             try {
+             //   readWrite.readFile();
                 readWrite.writeMessage(message);
                 readWrite.writeFile(fileTxt);
             } catch (IOException e) {

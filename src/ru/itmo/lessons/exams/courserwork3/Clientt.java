@@ -30,7 +30,7 @@ public class Clientt {
     }
 
     public static void main(String[] args) {
-        InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 2228);
+        InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 2229);
         Clientt clientt = new Clientt(inetSocketAddress);
         clientt.startClient();
     }
