@@ -38,7 +38,7 @@ public class ServerWithThreads {
     }
 
     public static void main(String[] args) {
-        ServerWithThreads serverWithThreads = new ServerWithThreads(2229);
+        ServerWithThreads serverWithThreads = new ServerWithThreads(2221);
         serverWithThreads.startServer();
     }
 }

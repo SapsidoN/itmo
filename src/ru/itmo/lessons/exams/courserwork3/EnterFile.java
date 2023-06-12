@@ -6,30 +6,28 @@ import java.nio.file.Files;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public class EnterFile implements Commands{
-    private CopyOnWriteArraySet<ReadWrite> arr;
     private ReadWrite clien;
 
-    public EnterFile(CopyOnWriteArraySet<ReadWrite> arr, ReadWrite clien) {
-        this.arr = arr;
+
+    public EnterFile(ReadWrite clien) {
         this.clien = clien;
     }
 
     @Override
-    public void comandEnter() {
+    public void comandEnter() {         // Отправка клиенту список файлов тхт
         try {
 
             Files.find(new File(".").toPath(), 1, (p, d) -> d.isRegularFile() && p.getFileName()
                     .toString().endsWith(".txt")).forEach(p -> {
-                for (var b : arr) {
                     try {
-                        b.writeMessage(new Message(p.getFileName().toString()));
+                        clien.writeMessage(new Message(p.getFileName().toString()));
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                }
             });
         }catch (IOException h){
             h.printStackTrace();
         }
     }
+
 }

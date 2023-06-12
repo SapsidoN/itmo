@@ -1,7 +1,6 @@
 package ru.itmo.lessons.exams.courserwork3;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
@@ -11,12 +10,18 @@ public class FileTxt implements Serializable {
     private String commentFile;
 
     private ArrayList<String> text;
+    private int length;
 
     public FileTxt(){
         text= new ArrayList<>();
     }
 
-    public void addFile(String put, String comment)  {
+    public ArrayList<String> getText(){
+        return text;
+        }
+
+
+    public void addFile(String put, String comment)  {    // найти и обернуть файл в обертку
         Path path = Path.of(put);
         this.commentFile = "#" + comment + "#" ;
         this.nameFile=path.getFileName().toString();
@@ -49,13 +54,14 @@ public class FileTxt implements Serializable {
             System.out.println("файл не подходит. Допускается только txt");
         }
 
-    } public void loadingFile(){;
+    } public String loadingFile(){     // Создать физически файл которой пришел с клиента
+        String status = null;
         File file = new File(nameFile);
         FileWriter fileWriter = null;
         try {
             boolean newFile = file.createNewFile();
-            if(newFile) System.out.println("создан");
-            else System.out.println("не создан");
+            if(newFile) status = "Файл создан " + " \n " + commentFile;
+            else return "Файл с таким названием уже есть";
             System.out.println(file.getName());
             System.out.println(commentFile);
             fileWriter = new FileWriter(file.getName());
@@ -74,6 +80,7 @@ public class FileTxt implements Serializable {
                 e.printStackTrace();
         }
         }
+        return status;
     }
 
 }

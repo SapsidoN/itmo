@@ -8,8 +8,11 @@ import java.util.Scanner;
 
 public class ClientGoMessage extends Thread {
 
-    public ReadWrite readWrite;
 
+    public ReadWrite readWrite;
+public String menu = "Введите сообщение или команду для продолжения" +
+            "\nОтправить файл:" +
+            "\n/Выход";
 
     public ClientGoMessage(ReadWrite readWrite) {
         this.readWrite = readWrite;
@@ -20,30 +23,43 @@ public class ClientGoMessage extends Thread {
         Scanner scanner = new Scanner(System.in);
         Path path = Path.of("C:\\h.txt");
         String text;
-        while (true) {
-            System.out.println("Введите сообщение для отправки, /exit для выхода ");
+        boolean flag= true;
+        while (flag) {
+            System.out.println(menu);
             text = scanner.nextLine();
-            if (text.equals("/exit")) {
-                readWrite.close();
-                break;
-            }
-            FileTxt fileTxt = new FileTxt();
-            fileTxt.addFile("C:\\h.txt","хуйня");
-            Message message = new Message(text);
             try {
-             //   readWrite.readFile();
-                readWrite.writeMessage(message);
-                readWrite.writeFile(fileTxt);
+                switch (text) {
+                    case "/Отправить файл" -> fileMessageToServers();
+                    case "/Выход" -> {
+                        readWrite.close();
+                        flag = false;
+                    }
+                    default -> textMessage(text);
+                }
             } catch (IOException e) {
                 System.out.println("Соеденение с сервером потеряно");
                 try (FileWriter writer = new FileWriter("message.txt", true)) {
                     // запись всей строки
                     writer.write(text);
-                }catch (IOException ex){
+                } catch (IOException ex) {
                     System.out.println("ошибка создания файла");
-                    ;
+
                 }
             }
         }
+    }
+
+    public void textMessage(String string) throws IOException {       // Cоздание и отправка сообшения
+        readWrite.writeMessage(new Message(string));
+    }
+    public void fileMessageToServers() throws IOException {  // Cоздание и отправка файла
+        Scanner scanner= new Scanner(System.in);
+        System.out.println("Введите путь до файла, и комент");
+        String text = scanner.nextLine();
+        String com = scanner.nextLine();
+        FileTxt fileTxt = new FileTxt();
+        fileTxt.addFile(text, com);
+        readWrite.writeFile(fileTxt);
+
     }
 }
