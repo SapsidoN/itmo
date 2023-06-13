@@ -8,7 +8,7 @@ public class ClientGoMessage extends Thread {
 
 
     public ReadWrite readWrite;
-public String menu = "Введите сообщение или команду для продолжения" +
+    public String menu = "Введите сообщение или команду для продолжения" +
             "\n/Отправить файл" +
             "\n/Выход";
 
@@ -20,7 +20,7 @@ public String menu = "Введите сообщение или команду д
     public void run() {
         Scanner scanner = new Scanner(System.in);
         String text;
-        boolean flag= true;
+        boolean flag = true;
         while (flag) {
             System.out.println(menu);
             text = scanner.nextLine();
@@ -49,8 +49,9 @@ public String menu = "Введите сообщение или команду д
     public void textMessage(String string) throws IOException {       // Cоздание и отправка сообшения
         readWrite.writeMessage(new Message(string));
     }
+
     public void fileMessageToServers() throws IOException {  // Cоздание и отправка файла
-        Scanner scanner= new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Введите путь до файла, и комент");
         String text = scanner.nextLine();
         String com = scanner.nextLine();

@@ -23,16 +23,16 @@ public class ThreadForConnection extends Thread {
 
     @Override
     public void run() {                                 // /Файлы для получения списка файлов с сервера
-            while (true) {
-                try {
-                    DataProcessor(clien.readMessage());
-                } catch (IOException e) {
-                    arr.remove(clien);
-                }
-
+        while (true) {
+            try {
+                DataProcessor(clien.readMessage());
+            } catch (IOException e) {
+                arr.remove(clien);
             }
 
         }
+
+    }
 
     public void messageForwarding(Message message) {   //Метод для отправки сообшений всем пользователям
 
@@ -67,15 +67,15 @@ public class ThreadForConnection extends Thread {
     }
 
     public void DataProcessor(Object processor) {
-        if(processor instanceof Message message){
+        if (processor instanceof Message message) {
             messageForwarding(message);
-        } else if(processor instanceof FileTxt fileTxt){
+        } else if (processor instanceof FileTxt fileTxt) {
             fileTxt.loadingFile();
             messageForwarding(new Message(fileTxt.loadingFile()));
-        }else System.out.println("Пришло что то неизвестное");
-        }
-
+        } else System.out.println("Пришло что то неизвестное");
     }
+
+}
 
 
 

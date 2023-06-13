@@ -4,13 +4,10 @@ import java.io.*;
 import java.net.Socket;
 import java.time.LocalDateTime;
 
-public class ReadWrite implements AutoCloseable{
+public class ReadWrite implements AutoCloseable {
     private Socket socket;
     private ObjectInputStream input;
     private ObjectOutputStream output;
-
-
-
 
 
     public ReadWrite(Socket socket) throws IOException {
@@ -19,20 +16,21 @@ public class ReadWrite implements AutoCloseable{
         this.socket = socket;
     }
 
-    public void writeFile(FileTxt fileTxt) throws IOException{
-      output.writeObject(fileTxt);
-      output.flush();
+    public void writeFile(FileTxt fileTxt) throws IOException {
+        output.writeObject(fileTxt);
+        output.flush();
 
     }
 
     public Object readMessage() throws IOException /*, ClassNotFoundException*/ {
         try {
-            return  input.readObject();
+            return input.readObject();
         } catch (ClassNotFoundException e) {
             System.out.println("Класс Message не найден");
         }
         return null;
     }
+
     public void writeMessage(Message message) throws IOException {
         message.setSent(LocalDateTime.now());
         output.writeObject(message);
@@ -40,7 +38,7 @@ public class ReadWrite implements AutoCloseable{
     }
 
     @Override
-    public void close()  {
+    public void close() {
         try {
             input.close();
             output.close();

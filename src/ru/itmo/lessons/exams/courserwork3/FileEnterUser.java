@@ -3,7 +3,7 @@ package ru.itmo.lessons.exams.courserwork3;
 import java.io.IOException;
 
 
-public class FileEnterUser implements Commands{
+public class FileEnterUser implements Commands {
     private ReadWrite clien;
 
 
@@ -16,17 +16,16 @@ public class FileEnterUser implements Commands{
         try {
 
             clien.writeMessage(new Message("Ввидите название файла"));
-            Message message= (Message) clien.readMessage();
+            Message message = (Message) clien.readMessage();
             FileTxt fileTxt = new FileTxt();
             fileTxt.addFile(message.getText(), "");
             clien.writeMessage(new Message(fileTxt.getText().toString()));
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Клиент отвалился");
         }
 
 
-
-        }
-
     }
+
+}
 

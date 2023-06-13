@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-public class EnterFile implements Commands{
+public class EnterFile implements Commands {
     private ReadWrite clien;
 
 
@@ -18,13 +18,13 @@ public class EnterFile implements Commands{
 
             Files.find(new File(".").toPath(), 1, (p, d) -> d.isRegularFile() && p.getFileName()
                     .toString().endsWith(".txt")).forEach(p -> {
-                    try {
-                        clien.writeMessage(new Message(p.getFileName().toString()));
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                try {
+                    clien.writeMessage(new Message(p.getFileName().toString()));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             });
-        }catch (IOException h){
+        } catch (IOException h) {
             h.printStackTrace();
         }
     }

@@ -2,16 +2,16 @@ package ru.itmo.lessons.exams.courserwork3;
 
 import java.io.IOException;
 
-public class ClientRead  extends  Thread{
+public class ClientRead extends Thread {
     private ReadWrite readWrite;
 
 
-    public ClientRead(ReadWrite readWrite){
-        this.readWrite=readWrite;
+    public ClientRead(ReadWrite readWrite) {
+        this.readWrite = readWrite;
     }
 
     @Override
-    public  void run(){
+    public void run() {
         while (true) {
             try {
                 Message message = (Message) readWrite.readMessage();

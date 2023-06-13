@@ -65,6 +65,15 @@ public interface Mapmetod extends Comparator<Task02> {
        Map<String,Integer> map =coutnWord(Arrays.asList(text.split(" ")));
        List<Map.Entry<String,Integer>> list= new ArrayList<>(map.entrySet());
 
+
+       //анонимный класс
+       Comparator<Map.Entry<String,Integer>> ValueComparator = new Comparator<Map.Entry<String, Integer>>() {
+           @Override
+           public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+               return 0;
+           }
+       };
+
        class ValueComparator implements  Comparator<Map.Entry<String,Integer>> {
            @Override
            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {

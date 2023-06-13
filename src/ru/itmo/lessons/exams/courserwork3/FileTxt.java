@@ -11,29 +11,29 @@ public class FileTxt implements Serializable {
     private String commentFile;
 
     private ArrayList<String> text;
-    private static int length=5;
+    private static int length = 5;
 
-    private static int size=300;
+    private static int size = 300;
 
-    public FileTxt(){
-        text= new ArrayList<>();
+    public FileTxt() {
+        text = new ArrayList<>();
     }
 
-    public ArrayList<String> getText(){
+    public ArrayList<String> getText() {
         return text;
-        }
+    }
 
 
-    public void addFile(String put, String comment)  {    // найти и обернуть файл в обертку
+    public void addFile(String put, String comment) {    // найти и обернуть файл в обертку
         Path path = Path.of(put);
-        this.commentFile = "#" + comment + "#" ;
-        this.nameFile=path.getFileName().toString();
-        int ind=path.toString().indexOf(".");
-        String n= path.toString().substring(ind,path.toString().length());
+        this.commentFile = "#" + comment + "#";
+        this.nameFile = path.getFileName().toString();
+        int ind = path.toString().indexOf(".");
+        String n = path.toString().substring(ind, path.toString().length());
         BufferedReader bufferedReader = null;
-        if(n.equals(".txt") && size>=path.toFile().length()/(1024 * 1024) && length>path.toFile().length()){
+        if (n.equals(".txt") && size >= path.toFile().length() / (1024 * 1024) && length > path.toFile().length()) {
             try {
-                 bufferedReader = new BufferedReader(new FileReader(path.toFile()));
+                bufferedReader = new BufferedReader(new FileReader(path.toFile()));
 
                 String line = bufferedReader.readLine();
                 while (line != null) {
@@ -41,29 +41,30 @@ public class FileTxt implements Serializable {
                     line = bufferedReader.readLine();
                 }
                 bufferedReader.close();
-            }catch (FileNotFoundException f){
+            } catch (FileNotFoundException f) {
                 System.out.println("файл не найден");
-            }catch (IOException io){
+            } catch (IOException io) {
                 System.out.println("Ошибка во время чтения файла");
-            }finally {
+            } finally {
                 try {
                     bufferedReader.close();
-                }catch (IOException e){
-            }
+                } catch (IOException e) {
+                }
 
             }
-        }
-        else {
+        } else {
             System.out.println("файл не подходит. Допускается только txt, или слишком большой ");
         }
 
-    } public String loadingFile(){     // Создать физически файл которой пришел с клиента
+    }
+
+    public String loadingFile() {     // Создать физически файл которой пришел с клиента
         String status = null;
         File file = new File(nameFile);
         FileWriter fileWriter = null;
         try {
-                file.createNewFile();
-                status = "Файл создан " + " \n " + commentFile;
+            file.createNewFile();
+            status = "Файл создан " + " \n " + commentFile;
             System.out.println(file.getName());
             System.out.println(commentFile);
             fileWriter = new FileWriter(file.getName());
@@ -72,16 +73,16 @@ public class FileTxt implements Serializable {
                 fileWriter.write(s);
             }
             return status;
-        }catch (IOException i){
+        } catch (IOException i) {
             i.printStackTrace();
-        }finally {
+        } finally {
             try {
 
-                if(fileWriter != null)
-                fileWriter.close();
-            }catch (IOException e){
+                if (fileWriter != null)
+                    fileWriter.close();
+            } catch (IOException e) {
                 e.printStackTrace();
-        }
+            }
         }
         return status;
     }

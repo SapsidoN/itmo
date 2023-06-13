@@ -8,24 +8,23 @@ public class Clientt {
     public InetSocketAddress remote;
 
 
-
     public Clientt(InetSocketAddress remote) {
         this.remote = remote;
     }
 
 
     public void startClient() {
-                try {
-                    Socket socket = new Socket(remote.getHostString(), remote.getPort());
-                    ReadWrite readWrite = new ReadWrite(socket);
-                    ClientGoMessage clientGoMessage = new ClientGoMessage(readWrite);
-                    clientGoMessage.start();
-                    ClientRead clientRead = new ClientRead(readWrite);
-                    clientRead.start();
-                } catch (IOException e) {
-                    System.out.println("не удалось подлючится к серверу ;(((((");
+        try {
+            Socket socket = new Socket(remote.getHostString(), remote.getPort());
+            ReadWrite readWrite = new ReadWrite(socket);
+            ClientGoMessage clientGoMessage = new ClientGoMessage(readWrite);
+            clientGoMessage.start();
+            ClientRead clientRead = new ClientRead(readWrite);
+            clientRead.start();
+        } catch (IOException e) {
+            System.out.println("не удалось подлючится к серверу ;(((((");
 
-                }
+        }
 
     }
 

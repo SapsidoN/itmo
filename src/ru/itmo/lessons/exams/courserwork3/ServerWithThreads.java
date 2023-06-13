@@ -14,8 +14,8 @@ public class ServerWithThreads {
         connections = new CopyOnWriteArraySet<>();
     }
 
-    public void startServer(){
-        try (ServerSocket serverSocket = new ServerSocket(port)){
+    public void startServer() {
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
             while (true) {
                 Socket socket = null;
                 try {
