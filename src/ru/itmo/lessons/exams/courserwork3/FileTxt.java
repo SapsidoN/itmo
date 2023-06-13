@@ -65,8 +65,6 @@ public class FileTxt implements Serializable {
         try {
             file.createNewFile();
             status = "Файл создан " + " \n " + commentFile;
-            System.out.println(file.getName());
-            System.out.println(commentFile);
             fileWriter = new FileWriter(file.getName());
             fileWriter.write(commentFile);
             for (String s : text) {
