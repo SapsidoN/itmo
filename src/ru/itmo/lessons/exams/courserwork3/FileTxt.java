@@ -1,6 +1,7 @@
 package ru.itmo.lessons.exams.courserwork3;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
@@ -10,7 +11,9 @@ public class FileTxt implements Serializable {
     private String commentFile;
 
     private ArrayList<String> text;
-    private int length;
+    private static int length=5;
+
+    private static int size=300;
 
     public FileTxt(){
         text= new ArrayList<>();
@@ -28,7 +31,7 @@ public class FileTxt implements Serializable {
         int ind=path.toString().indexOf(".");
         String n= path.toString().substring(ind,path.toString().length());
         BufferedReader bufferedReader = null;
-        if(n.equals(".txt")){
+        if(n.equals(".txt") && size>=path.toFile().length()/(1024 * 1024) && length>path.toFile().length()){
             try {
                  bufferedReader = new BufferedReader(new FileReader(path.toFile()));
 
@@ -51,7 +54,7 @@ public class FileTxt implements Serializable {
             }
         }
         else {
-            System.out.println("файл не подходит. Допускается только txt");
+            System.out.println("файл не подходит. Допускается только txt, или слишком большой ");
         }
 
     } public String loadingFile(){     // Создать физически файл которой пришел с клиента
@@ -59,9 +62,8 @@ public class FileTxt implements Serializable {
         File file = new File(nameFile);
         FileWriter fileWriter = null;
         try {
-            boolean newFile = file.createNewFile();
-            if(newFile) status = "Файл создан " + " \n " + commentFile;
-            else return "Файл с таким названием уже есть";
+                file.createNewFile();
+                status = "Файл создан " + " \n " + commentFile;
             System.out.println(file.getName());
             System.out.println(commentFile);
             fileWriter = new FileWriter(file.getName());
@@ -69,6 +71,7 @@ public class FileTxt implements Serializable {
             for (String s : text) {
                 fileWriter.write(s);
             }
+            return status;
         }catch (IOException i){
             i.printStackTrace();
         }finally {

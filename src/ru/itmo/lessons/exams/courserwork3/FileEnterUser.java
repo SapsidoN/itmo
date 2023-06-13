@@ -16,7 +16,7 @@ public class FileEnterUser implements Commands{
         try {
 
             clien.writeMessage(new Message("Ввидите название файла"));
-            Message message= clien.readMessage();
+            Message message= (Message) clien.readMessage();
             FileTxt fileTxt = new FileTxt();
             fileTxt.addFile(message.getText(), "");
             clien.writeMessage(new Message(fileTxt.getText().toString()));

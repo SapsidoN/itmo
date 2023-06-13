@@ -1,9 +1,7 @@
 package ru.itmo.lessons.exams.courserwork3;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Scanner;
 
 public class ClientGoMessage extends Thread {
@@ -11,7 +9,7 @@ public class ClientGoMessage extends Thread {
 
     public ReadWrite readWrite;
 public String menu = "Введите сообщение или команду для продолжения" +
-            "\nОтправить файл:" +
+            "\n/Отправить файл" +
             "\n/Выход";
 
     public ClientGoMessage(ReadWrite readWrite) {
@@ -21,7 +19,6 @@ public String menu = "Введите сообщение или команду д
     @Override
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        Path path = Path.of("C:\\h.txt");
         String text;
         boolean flag= true;
         while (flag) {
@@ -60,6 +57,7 @@ public String menu = "Введите сообщение или команду д
         FileTxt fileTxt = new FileTxt();
         fileTxt.addFile(text, com);
         readWrite.writeFile(fileTxt);
+
 
     }
 }

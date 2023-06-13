@@ -14,7 +14,7 @@ public class ClientRead  extends  Thread{
     public  void run(){
         while (true) {
             try {
-                Message message = readWrite.readMessage();
+                Message message = (Message) readWrite.readMessage();
                 System.out.println("Сообщение от сервера " + message.getText());
             } catch (IOException e) {
                 System.out.println("Соеденение сервером потеряно");

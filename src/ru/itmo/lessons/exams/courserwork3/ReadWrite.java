@@ -25,18 +25,9 @@ public class ReadWrite implements AutoCloseable{
 
     }
 
-    public FileTxt readFiletxt() throws IOException {
+    public Object readMessage() throws IOException /*, ClassNotFoundException*/ {
         try {
-            return  (FileTxt) input.readObject();
-        }catch (ClassNotFoundException c){
-            System.out.println("класс не найден");
-        }
-        return null;
-    }
-
-    public Message readMessage() throws IOException /*, ClassNotFoundException*/ {
-        try {
-            return (Message) input.readObject();
+            return  input.readObject();
         } catch (ClassNotFoundException e) {
             System.out.println("Класс Message не найден");
         }
